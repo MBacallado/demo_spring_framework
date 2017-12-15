@@ -1,0 +1,14 @@
+spring:
+  thymeleaf: 
+    cache: true # Enable template caching.
+    check-template: true # Check that the template exists before rendering it.
+    check-template-location: true # Check that the templates location exists.
+    content-type: text/html # Content-Type value.
+    enabled: true # Enable MVC Thymeleaf view resolution.
+    encoding: UTF-8 # Template encoding.
+    mode: HTML5 # Template mode to be applied to templates. See also StandardTemplateModeHandlers.
+    suffix: .html # Suffix that gets appended to view names when building a URL.
+server:
+  error:
+    whitelabel:
+      enabled: true
