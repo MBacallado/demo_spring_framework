@@ -8,6 +8,20 @@ spring:
     encoding: UTF-8 # Template encoding.
     mode: HTML5 # Template mode to be applied to templates. See also StandardTemplateModeHandlers.
     suffix: .html # Suffix that gets appended to view names when building a URL.
+  datasource:
+    url: jdbc:mariadb://localhost:3306/movies
+    username: root
+    password: rootroot
+    driver-class-name: org.mariadb.jdbc.Driver 
+  jpa:
+    show-sql: true # Enable logging of SQL statements.
+    hibernate:
+      ddl-auto: update #entities se actualizan con la bbdd
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy # Hibernate 4 naming strategy fully qualified name. Not supported with Hibernate 5
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect # Additional native properties to set on the JPA provider.
 server:
   error:
     whitelabel:
