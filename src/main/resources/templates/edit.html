@@ -6,6 +6,7 @@
 </head>
 <body>
 	<form action="#" th:action="@{/movies/editMovie}" th:object="${movie}" method="post">
+		<p><input type="hidden" th:field="*{id}"/></p>
 		<p>Name: <input type="text" th:field="*{name}"/></p>
 		<p>Genre: <input type="text" th:field="*{genre}"/></p>
 		<p>Duration: <input type="text" th:field="*{duration}"/></p>

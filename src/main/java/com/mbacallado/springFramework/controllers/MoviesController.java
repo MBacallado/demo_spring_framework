@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -21,6 +20,7 @@ import com.mbacallado.springFramework.services.MovieService;
 @RequestMapping("/movies")
 public class MoviesController {
 
+	private static final String LIST_VIEW = "/movies/all";
 	private static final String MOVIES_VIEW = "movies";
 	private static final String ADD_VIEW = "add";
 	private static final String EDIT_VIEW = "edit";
@@ -42,12 +42,12 @@ public class MoviesController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/processAction", params="add", method=RequestMethod.POST)
+	@GetMapping("/add")
 	public String add(@ModelAttribute("movie") Movie movie) {
 		return ADD_VIEW;
 	}
 	
-	@GetMapping(value="/edit")
+	@GetMapping("/edit")
 	public ModelAndView edit(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " editParam()");
 		ModelAndView mav = new ModelAndView(EDIT_VIEW);
@@ -55,11 +55,11 @@ public class MoviesController {
 		return mav;
 	}
 
-	@RequestMapping(value="/processAction", params="remove", method=RequestMethod.POST)
-	public ModelAndView remove(@ModelAttribute("movie") Movie movie) {
+	@GetMapping("/remove")
+	public ModelAndView remove(@RequestParam(name = "id") int id) {
+		LOG.info("Call: " + TAG + " removeParam()");
 		ModelAndView mav = new ModelAndView(REMOVE_VIEW);
-		//mav.addObject("movie", new Movie());
-		mav.addObject("movie", movie);
+		mav.addObject("movie", moviesService.findById(id));
 		return mav;
 	}
 	
@@ -68,20 +68,21 @@ public class MoviesController {
 		LOG.info("Call: " + TAG + " addMovie()");
 		movie.toString();
 		moviesService.addMovie(movie);
-		return new RedirectView(MOVIES_VIEW);
+		return new RedirectView(LIST_VIEW);
 	}
 	
 	@PostMapping("/editMovie")
 	public RedirectView editMovie(@ModelAttribute("movie") Movie movie) {
 		LOG.info("Call: " + TAG + " editMovie()");
+		//moviesService.editMovie(movie);
 		moviesService.editMovie(movie);
-		return new RedirectView("/movies/all");
+		return new RedirectView(LIST_VIEW);
 	}
 	
 	@GetMapping("/removeMovie")
-	public String removeMovie(@ModelAttribute("movie") Movie movie) {
+	public RedirectView removeMovie(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " removeMovie()");
-		moviesService.removeMovie(movie.getId());
-		return "redirect:/movies/all";
+		moviesService.removeMovie(id);
+		return new RedirectView(LIST_VIEW);
 	}
 }

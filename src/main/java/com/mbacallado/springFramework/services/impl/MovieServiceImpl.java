@@ -13,7 +13,7 @@ import com.mbacallado.springFramework.repository.MoviesRepository;
 import com.mbacallado.springFramework.services.MovieService;
 
 @Service("movieServiceImpl")
-public class MovieServiceImpl implements MovieService{
+public class MovieServiceImpl implements MovieService {
 
 	private static final Log LOG = LogFactory.getLog(MovieServiceImpl.class);
 	private static final String TAG = MovieServiceImpl.class.getSimpleName();
@@ -37,6 +37,7 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public void editMovie(Movie movie) {
 		LOG.info(TAG + " --editMovie" );
+		//moviesRepository.updateMovie(movie.getId(), movie.getName(), movie.getGenre(), movie.getDuration(), movie.getYear(), movie.getDirector(), movie.getActors(), movie.getSinopsis());
 		moviesRepository.save(movie);
 	}
 

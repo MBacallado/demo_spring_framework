@@ -22,7 +22,7 @@ public class Movie {
 	private String genre;
 	
 	@Column(name="duration")
-	private Float duration;
+	private int duration;
 	
 	@Column(name="year")
 	private int year;
@@ -40,7 +40,7 @@ public class Movie {
 		
 	}
 
-	public Movie(int id, String name, String genre, Float duration, int year, String director, String actors,
+	public Movie(int id, String name, String genre, int duration, int year, String director, String actors,
 			String sinopsis) {
 		super();
 		this.id = id;
@@ -77,11 +77,11 @@ public class Movie {
 		this.genre = genre;
 	}
 
-	public Float getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Float duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 
