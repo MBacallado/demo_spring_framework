@@ -22,31 +22,45 @@ public class MovieServiceImpl implements MovieService {
 	@Qualifier("moviesRepository")
 	private MoviesRepository moviesRepository;
 	
+	/**
+	 * Method that returns all movies
+	 */
 	@Override
 	public List<Movie> getAllMovies() {
 		LOG.info(TAG + " --getAllMovies" );
 		return moviesRepository.findAll();
 	}
 
+	/**
+	 * Method that adds a movie to the db
+	 */
 	@Override
 	public void addMovie(Movie movie) {
 		LOG.info(TAG + " --insertMovie" );
 		moviesRepository.save(movie);
 	}
 
+	/**
+	 * Method that edits a movie with a hidden id to the db
+	 */
 	@Override
 	public void editMovie(Movie movie) {
 		LOG.info(TAG + " --editMovie" );
-		//moviesRepository.updateMovie(movie.getId(), movie.getName(), movie.getGenre(), movie.getDuration(), movie.getYear(), movie.getDirector(), movie.getActors(), movie.getSinopsis());
 		moviesRepository.save(movie);
 	}
 
+	/**
+	 * Method that removes a movie by his id of the db
+	 */
 	@Override
 	public void removeMovie(int id) {
 		LOG.info(TAG + " --deleteMovie");
 		moviesRepository.delete(id);
 	}
 
+	/**
+	 * Method that finds a movie by his id
+	 */
 	@Override
 	public Movie findById(int id) {
 		LOG.info(TAG + " --findById");

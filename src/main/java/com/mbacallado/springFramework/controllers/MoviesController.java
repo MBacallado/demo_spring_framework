@@ -34,6 +34,10 @@ public class MoviesController {
 	@Qualifier("movieServiceImpl")
 	private MovieService moviesService;
 	
+	/**
+	 * Method that returns a view with all movies
+	 * @return
+	 */
 	@GetMapping("/all")
 	public ModelAndView getAllMovies() {
 		LOG.info("Call: " + TAG + " getAllMovies()");
@@ -42,11 +46,21 @@ public class MoviesController {
 		return mav;
 	}
 	
+	/**
+	 * Method that returns the add view (HTML)
+	 * @param movie
+	 * @return
+	 */
 	@GetMapping("/add")
-	public String add(@ModelAttribute("movie") Movie movie) {
+	public String add() {
 		return ADD_VIEW;
 	}
 	
+	/**
+	 * Method that returns or redirects to the edit view with the id(HTML)
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/edit")
 	public ModelAndView edit(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " editParam()");
@@ -55,6 +69,11 @@ public class MoviesController {
 		return mav;
 	}
 
+	/**
+	 * Method that returns or redirects to the remove view with the id(HTML)
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/remove")
 	public ModelAndView remove(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " removeParam()");
@@ -63,6 +82,11 @@ public class MoviesController {
 		return mav;
 	}
 	
+	/**
+	 * Method that adds a movie and redirects to the movies view(HTML)
+	 * @param movie
+	 * @return
+	 */
 	@PostMapping("/addMovie")
 	public RedirectView addMovie(@ModelAttribute("movie") Movie movie) {
 		LOG.info("Call: " + TAG + " addMovie()");
@@ -71,6 +95,11 @@ public class MoviesController {
 		return new RedirectView(LIST_VIEW);
 	}
 	
+	/**
+	 * Method that edits a movie and redirects to the movies view(HTML)
+	 * @param movie
+	 * @return
+	 */
 	@PostMapping("/editMovie")
 	public RedirectView editMovie(@ModelAttribute("movie") Movie movie) {
 		LOG.info("Call: " + TAG + " editMovie()");
@@ -79,6 +108,11 @@ public class MoviesController {
 		return new RedirectView(LIST_VIEW);
 	}
 	
+	/**
+	 * Method that removes a movie and redirects to the movies view(HTML)
+	 * @param movie
+	 * @return
+	 */
 	@GetMapping("/removeMovie")
 	public RedirectView removeMovie(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " removeMovie()");
