@@ -27,7 +27,6 @@ public class MoviesController {
 	private static final String REMOVE_VIEW = "remove";
 	
 	private static final Log LOG = LogFactory.getLog(MoviesController.class);
-	
 	private static final String TAG = MoviesController.class.getSimpleName();
 	
 	@Autowired

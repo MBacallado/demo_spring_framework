@@ -27,7 +27,7 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	@Override
 	public List<Movie> getAllMovies() {
-		LOG.info(TAG + " --getAllMovies" );
+		LOG.info("call: " + TAG + " --getAllMovies" );
 		return moviesRepository.findAll();
 	}
 
@@ -36,7 +36,7 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	@Override
 	public void addMovie(Movie movie) {
-		LOG.info(TAG + " --insertMovie" );
+		LOG.info("call: " + TAG + " --insertMovie" );
 		moviesRepository.save(movie);
 	}
 
@@ -45,7 +45,7 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	@Override
 	public void editMovie(Movie movie) {
-		LOG.info(TAG + " --editMovie" );
+		LOG.info("call: " + TAG + " --editMovie" );
 		moviesRepository.save(movie);
 	}
 
@@ -54,7 +54,7 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	@Override
 	public void removeMovie(int id) {
-		LOG.info(TAG + " --deleteMovie");
+		LOG.info("call: " + TAG + " --deleteMovie");
 		moviesRepository.delete(id);
 	}
 
@@ -63,7 +63,7 @@ public class MovieServiceImpl implements MovieService {
 	 */
 	@Override
 	public Movie findById(int id) {
-		LOG.info(TAG + " --findById");
+		LOG.info("call: " + TAG + " --findById");
 		return moviesRepository.findOne(id);
 	}
 
