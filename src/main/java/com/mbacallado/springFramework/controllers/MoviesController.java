@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,7 +52,8 @@ public class MoviesController {
 	 * @return
 	 */
 	@GetMapping("/add")
-	public String add() {
+	public String add(Model model) {
+		model.addAttribute("movie", new Movie());
 		return ADD_VIEW;
 	}
 	
@@ -102,7 +104,6 @@ public class MoviesController {
 	@PostMapping("/editMovie")
 	public RedirectView editMovie(@ModelAttribute("movie") Movie movie) {
 		LOG.info("Call: " + TAG + " editMovie()");
-		//moviesService.editMovie(movie);
 		moviesService.editMovie(movie);
 		return new RedirectView(LIST_VIEW);
 	}

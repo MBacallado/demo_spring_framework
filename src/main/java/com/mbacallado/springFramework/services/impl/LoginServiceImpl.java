@@ -20,6 +20,9 @@ public class LoginServiceImpl implements LoginService {
 	@Qualifier("userRepository")
 	private UserRepository userRepository;
 	
+	/**
+	 * Method that checks the credentials and returns true or false
+	 */
 	@Override
 	public boolean checkUser(User user) {
 		LOG.info("call: " + TAG + " --checkUser");

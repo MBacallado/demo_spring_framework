@@ -7,39 +7,46 @@
 <body>
 	<div>
 		<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th>Genre</th>
-				<th>Duration</th>
-				<th>Year</th>
-				<th>Director</th>
-				<th>Actors</th>
-				<th>Sinopsis</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<tr th:each="movie : ${movies}">
-				<th><span th:text="${movie.id}">ID</span></th>
-				<th><span th:text="${movie.name}">Name</span></th>
-				<th><span th:text="${movie.genre}">Genre</span></th>
-				<th><span th:text="${movie.duration}">Duration</span></th>
-				<th><span th:text="${movie.year}">Year</span></th>
-				<th><span th:text="${movie.director}">Director</span></th>
-				<th><span th:text="${movie.actors}">Actors</span></th>
-				<th><span th:text="${movie.sinopsis}">Sinopsis</span></th>
-				<th><a href="#" th:href="@{/movies/edit?id=__${movie.id}__}"> 
-					<p><input type="submit" name="edit" value="Edit"/></p></a></th>
-				<th><a href="#" th:href="@{/movies/remove?id=__${movie.id}__}"> 
-					<p><input type="submit" name="remove" value="Delete"/></p></a></th>
-			</tr>
-		</tbody>
-	</table>
-	<th><a href="#" th:href="@{/movies/add}"> 
-					<p><input type="submit" name="add" value="Add"/></p></a></th>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Genre</th>
+					<th>Duration</th>
+					<th>Year</th>
+					<th>Director</th>
+					<th>Actors</th>
+					<th>Sinopsis</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="movie : ${movies}">
+					<th><span th:text="${movie.id}">ID</span></th>
+					<th><span th:text="${movie.name}">Name</span></th>
+					<th><span th:text="${movie.genre}">Genre</span></th>
+					<th><span th:text="${movie.duration}">Duration</span></th>
+					<th><span th:text="${movie.year}">Year</span></th>
+					<th><span th:text="${movie.director}">Director</span></th>
+					<th><span th:text="${movie.actors}">Actors</span></th>
+					<th><span th:text="${movie.sinopsis}">Sinopsis</span></th>
+					<th><a href="#" th:href="@{/movies/edit?id=__${movie.id}__}"> 
+						<p><input type="submit" name="edit" value="Edit"/></p></a></th>
+					<th><a href="#" th:href="@{/movies/remove?id=__${movie.id}__}"> 
+						<p><input type="submit" name="remove" value="Delete"/></p></a></th>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	
+	<div>
+		<table>
+			<tr>
+				<th><a href="#" th:href="@{/movies/add}"> 
+					<p><input type="submit" name="add" value="Add"/></p></a></th>
+				<th><a href="#" th:href="@{/login?logout}"> 
+					<p><input type="submit" name="logout" value="logout"/></p></a></th>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
