@@ -2,17 +2,10 @@ package com.mbacallado.springFramework.controllers;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.mbacallado.springFramework.entity.User;
-import com.mbacallado.springFramework.services.LoginService;
 
 @Controller
 public class LoginController {
@@ -21,20 +14,6 @@ public class LoginController {
 
 	private static final Log LOG = LogFactory.getLog(LoginController.class);
 	private static final String TAG = LoginController.class.getSimpleName();
-	
-	@Autowired
-	@Qualifier("loginServiceImpl")
-	private LoginService loginService;
-	
-	/**
-	 * Method that redirects to the login method
-	 * @return
-	 */
-	@GetMapping("/")
-	public String redirectToLogin() {
-		LOG.info("call: " + TAG + " redirectToLogin()");
-		return "redirect:/login";
-	}
 	
 	/**
 	 * Method that redirects to the login html 
@@ -50,7 +29,6 @@ public class LoginController {
 		LOG.info("call: " + TAG + " showForm()");
 		model.addAttribute("error", error);
 		model.addAttribute("logout", logout);
-		model.addAttribute("user", new User());
 		return LOGIN_VIEW;
 	}
 	
@@ -59,9 +37,9 @@ public class LoginController {
 	 * @param user
 	 * @return
 	 */
-	@PostMapping("/checkCredentials")
-	public String checkUser(@ModelAttribute("user") User user) {
+	@GetMapping({"/loginsuccess", "/"})
+	public String checkUser() {
 		LOG.info("call: " + TAG + " checkCredentials()");
-		return loginService.checkUser(user) ? "redirect:/movies/all" : "redirect:/login?error";
+		return "redirect:/movies/all";
 	}
 }

@@ -43,8 +43,8 @@
 			<tr>
 				<th><a href="#" th:href="@{/movies/add}"> 
 					<p><input type="submit" name="add" value="Add"/></p></a></th>
-				<th><a href="#" th:href="@{/login?logout}"> 
-					<p><input type="submit" name="logout" value="logout"/></p></a></th>
+				<th><form th:action="@{/logout}" method="POST"> 
+					<p><input type="submit" name="logout" value="logout"/></p></form></th>
 			</tr>
 		</table>
 	</div>

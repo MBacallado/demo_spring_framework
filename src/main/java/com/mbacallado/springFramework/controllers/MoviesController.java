@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,6 +52,7 @@ public class MoviesController {
 	 * @param movie
 	 * @return
 	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/add")
 	public String add(Model model) {
 		model.addAttribute("movie", new Movie());
@@ -62,6 +64,7 @@ public class MoviesController {
 	 * @param id
 	 * @return
 	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/edit")
 	public ModelAndView edit(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " editParam()");
@@ -75,6 +78,7 @@ public class MoviesController {
 	 * @param id
 	 * @return
 	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/remove")
 	public ModelAndView remove(@RequestParam(name = "id") int id) {
 		LOG.info("Call: " + TAG + " removeParam()");
