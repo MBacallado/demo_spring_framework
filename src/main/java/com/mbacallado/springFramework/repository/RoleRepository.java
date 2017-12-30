@@ -13,5 +13,4 @@ public interface RoleRepository extends JpaRepository<Role, Serializable> {
 	
 	@Query(value="SELECT * FROM roles WHERE role_id = ?1", nativeQuery=true)
 	public Role findById(int roleId);
-	
 }

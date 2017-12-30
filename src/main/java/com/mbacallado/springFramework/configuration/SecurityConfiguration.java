@@ -20,11 +20,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Qualifier("loginService")
 	private UserDetailsService userServiceImpl;
 	
+	/**
+	 * Method that configures the global environment with the userDetailsService attrs
+	 * @param builder
+	 * @throws Exception
+	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception {
 		builder.userDetailsService(userServiceImpl).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
+	/**
+	 * Method that configures the requests by http
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()

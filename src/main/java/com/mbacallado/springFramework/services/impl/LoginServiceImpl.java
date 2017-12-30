@@ -35,6 +35,9 @@ public class LoginServiceImpl implements UserDetailsService {
 	@Qualifier("roleRepository")
 	private RoleRepository roleRepository;
 
+	/**
+	 * Method that creates and returns an UserDetails from username
+	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findUserByUsername(username);
@@ -43,10 +46,21 @@ public class LoginServiceImpl implements UserDetailsService {
 		return buildUser(user, auths);
 	}
 
+	/**
+	 * Method that creates and returns a new User with the username, password and roles
+	 * @param user
+	 * @param auths
+	 * @return
+	 */
 	private org.springframework.security.core.userdetails.User buildUser(User user, List<GrantedAuthority> auths) {
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), auths);
 	}
 	
+	/**
+	 * Method that creates and returns an ArrayList with the roles converted to GrandtedAuthorities
+	 * @param role
+	 * @return
+	 */
 	private List<GrantedAuthority> buildAuths(Role role) {
 		Set<GrantedAuthority> auth = new HashSet<GrantedAuthority>();
 		LOG.info(TAG + ":" + role.getRole());
