@@ -1,6 +1,6 @@
 spring:
   thymeleaf: 
-    cache: true # Enable template caching.
+    cache: false # Enable template caching.
     check-template: true # Check that the template exists before rendering it.
     check-template-location: true # Check that the templates location exists.
     content-type: text/html # Content-Type value.
