@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>ADD</title>
+</head>
+<body>
+	<form action="#" th:action="@{/movies/addMovie}" th:object="${movie}" method="post">
+		<p>Name: <input type="text" th:field="*{name}"/></p>
+		<p>Genre: <input type="text" th:field="*{genre}"/></p>
+		<p>Duration: <input type="text" th:field="*{duration}"/></p>
+		<p>Year: <input type="text" th:field="*{year}"/></p>
+		<p>Director: <input type="text" th:field="*{director}"/></p>
+		<p>Actors: <input type="text" th:field="*{actors}"/></p>
+		<p>Sinopsis: <input type="text" th:field="*{sinopsis}"/></p>
+		<p><input type="submit" value="Submit"/></p>
+	</form>
+</body>
+</html>

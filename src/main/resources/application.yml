@@ -1,0 +1,28 @@
+spring:
+  thymeleaf: 
+    cache: false # Enable template caching.
+    check-template: true # Check that the template exists before rendering it.
+    check-template-location: true # Check that the templates location exists.
+    content-type: text/html # Content-Type value.
+    enabled: true # Enable MVC Thymeleaf view resolution.
+    encoding: UTF-8 # Template encoding.
+    mode: HTML5 # Template mode to be applied to templates. See also StandardTemplateModeHandlers.
+    suffix: .html # Suffix that gets appended to view names when building a URL.
+  datasource:
+    url: jdbc:mariadb://192.168.1.5:3306/movies
+    username: root
+    password: rootroot
+    driver-class-name: org.mariadb.jdbc.Driver 
+  jpa:
+    show-sql: true # Enable logging of SQL statements.
+    hibernate:
+      ddl-auto: update #entities se actualizan con la bbdd
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy # Hibernate 4 naming strategy fully qualified name. Not supported with Hibernate 5
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect # Additional native properties to set on the JPA provider.
+server:
+  error:
+    whitelabel:
+      enabled: true

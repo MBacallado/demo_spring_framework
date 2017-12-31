@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Remove</title>
+</head>
+<body>
+	<p>¿Do you want to remove the movie: <span th:text="${movie.name}"></span>?</p>
+	<th><a href="#" th:href="@{/movies/removeMovie?id=__${movie.id}__}"> 
+					<p><input type="submit" name="add" value="Yes"/></p></a></th>
+	<th><a href="#" th:href="@{/movies/all}"> 
+					<p><input type="submit" name="add" value="No"/></p></a></th>
+</body>
+</html>

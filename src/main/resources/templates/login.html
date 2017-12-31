@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Login</title>
+</head>
+<body>
+	<div>
+		<form action="#" th:action="@{/checkCredentials}" method="POST">
+			<input type="hidden" name="${_crsf.parameterName}" value="${_csrf.token}"/>
+			<p>Username: <input type="text" name="username" id="username"/></p>
+			<p>Password: <input type="password" name="password" id="password"/></p>
+			<div th:if="${error != null}">Invalid username or password</div>
+			<p><input type="submit" value="Submit"/></p>
+		</form>
+	</div>
+	<div th:if="${logout != null}">Logout successfully!</div>
+</body>
+</html>
